@@ -36,8 +36,7 @@ const io = new Server(server, {
       
       // Check if origin is in allowed list or is a Vercel preview URL
       if (allowedOrigins.includes(origin) || 
-          origin.includes('vercel.app') || 
-          origin.includes('datla-rakesh-varmas-projects.vercel.app')) {
+          origin.includes('vercel.app')) {
         return callback(null, true);
       }
       
@@ -71,6 +70,7 @@ app.use(cors({
       "http://localhost:8080",
       "http://localhost:3000", 
       "https://blog-craft-aradhana.vercel.app",
+      "https://blog-craft-aradhana.vercel.app/",
       process.env.CLIENT_URL
     ];
     
@@ -79,8 +79,7 @@ app.use(cors({
     
     // Check if origin is in allowed list or is a Vercel preview URL
     if (allowedOrigins.includes(origin) || 
-        origin.includes('vercel.app') || 
-        origin.includes('datla-rakesh-varmas-projects.vercel.app')) {
+        origin.includes('vercel.app')) {
       return callback(null, true);
     }
     
