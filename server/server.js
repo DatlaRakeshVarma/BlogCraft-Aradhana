@@ -23,7 +23,26 @@ const server = createServer(app);
 // Socket.io setup
 const io = new Server(server, {
   cors: {
-    origin: process.env.CLIENT_URL || "http://localhost:8080",
+    origin: (origin, callback) => {
+      const allowedOrigins = [
+        "http://localhost:8080",
+        "http://localhost:3000",
+        "https://blog-craft-aradhana.vercel.app",
+        process.env.CLIENT_URL
+      ];
+      
+      // Allow requests with no origin (mobile apps, Postman, etc.)
+      if (!origin) return callback(null, true);
+      
+      // Check if origin is in allowed list or is a Vercel preview URL
+      if (allowedOrigins.includes(origin) || 
+          origin.includes('vercel.app') || 
+          origin.includes('datla-rakesh-varmas-projects.vercel.app')) {
+        return callback(null, true);
+      }
+      
+      return callback(new Error('Not allowed by CORS'));
+    },
     methods: ["GET", "POST"]
   }
 });
@@ -47,7 +66,26 @@ app.use('/api/', limiter);
 
 // CORS
 app.use(cors({
-  origin: process.env.CLIENT_URL || "http://localhost:8080",
+  origin: (origin, callback) => {
+    const allowedOrigins = [
+      "http://localhost:8080",
+      "http://localhost:3000", 
+      "https://blog-craft-aradhana.vercel.app",
+      process.env.CLIENT_URL
+    ];
+    
+    // Allow requests with no origin (mobile apps, Postman, etc.)
+    if (!origin) return callback(null, true);
+    
+    // Check if origin is in allowed list or is a Vercel preview URL
+    if (allowedOrigins.includes(origin) || 
+        origin.includes('vercel.app') || 
+        origin.includes('datla-rakesh-varmas-projects.vercel.app')) {
+      return callback(null, true);
+    }
+    
+    return callback(new Error('Not allowed by CORS'));
+  },
   credentials: true,
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"]
