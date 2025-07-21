@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { PenTool, Eye, MessageCircle, Heart, Plus, Edit, Trash2, Sparkles, ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../hooks';
-import { fetchMyPosts, deletePost } from '../store/slices/postSlice';
+import { fetchMyPosts, deletePost, toggleLike } from '../store/slices/postSlice';
 import { logout } from '../store/slices/authSlice';
 
 const Dashboard = () => {
@@ -22,6 +22,10 @@ const Dashboard = () => {
     if (window.confirm('Are you sure you want to delete this post?')) {
       dispatch(deletePost(postId));
     }
+  };
+
+  const handleLike = async (postId: string) => {
+    dispatch(toggleLike(postId));
   };
 
   const handleLogout = () => {
@@ -221,10 +225,19 @@ const Dashboard = () => {
                         <Eye className="w-4 h-4" />
                         <span>{post.views} views</span>
                       </div>
-                      <div className="flex items-center space-x-1">
-                        <Heart className="w-4 h-4" />
+                      <button 
+                        onClick={() => handleLike(post._id)}
+                        className="flex items-center space-x-1 hover:text-red-500 transition-colors cursor-pointer"
+                      >
+                        <Heart 
+                          className={`w-4 h-4 ${
+                            post.likes?.some(like => like.user === user?._id) 
+                              ? 'fill-red-500 text-red-500' 
+                              : 'hover:text-red-500'
+                          }`} 
+                        />
                         <span>{post.likeCount} likes</span>
-                      </div>
+                      </button>
                       <div className="flex items-center space-x-1">
                         <MessageCircle className="w-4 h-4" />
                         <span>{post.commentCount} comments</span>
