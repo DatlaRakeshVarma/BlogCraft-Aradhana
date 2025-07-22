@@ -51,14 +51,6 @@ const Dashboard = () => {
       <header className="bg-white shadow-sm border-b">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center space-x-4">
-            <Button
-              variant="outline"
-              onClick={() => navigate('/')}
-              className="hover:scale-105 transition-transform duration-200"
-            >
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Home
-            </Button>
             <div className="flex items-center space-x-2">
               <div 
                 className="w-8 h-8 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-lg flex items-center justify-center cursor-pointer hover:opacity-80"
@@ -78,7 +70,7 @@ const Dashboard = () => {
               onClick={() => navigate('/blogs')}
               className="hover:scale-105 transition-transform duration-200"
             >
-              View All Blogs
+              All Blogs
             </Button>
             <Button 
               variant="outline" 
@@ -92,7 +84,7 @@ const Dashboard = () => {
               onClick={() => navigate('/create-post')}
             >
               <Plus className="w-4 h-4 mr-2" />
-              New Post
+              Post
             </Button>
           </div>
         </div>
