@@ -70,7 +70,7 @@ const Dashboard = () => {
               onClick={() => navigate('/blogs')}
               className="hover:scale-105 transition-transform duration-200"
             >
-              All Blogs
+              Blogs
             </Button>
             <Button 
               variant="outline" 
