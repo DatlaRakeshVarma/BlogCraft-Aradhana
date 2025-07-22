@@ -112,7 +112,7 @@ Thank you for reading! Feel free to share your thoughts and experiences in the c
 
     const result = await dispatch(createPost(postData));
     if (createPost.fulfilled.match(result)) {
-      navigate('/dashboard');
+      navigate('/');
     }
   };
 
@@ -122,14 +122,6 @@ Thank you for reading! Feel free to share your thoughts and experiences in the c
       <header className="bg-white shadow-sm border-b">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center space-x-4">
-            <Button 
-              variant="outline" 
-              onClick={() => navigate('/dashboard')}
-              className="hover:scale-105 transition-transform duration-200"
-            >
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Dashboard
-            </Button>
             <div className="flex items-center space-x-2">
               <div
                 className="flex items-center space-x-2 cursor-pointer hover:opacity-80"
@@ -281,7 +273,7 @@ Thank you for reading! Feel free to share your thoughts and experiences in the c
                 <Button 
                   type="button" 
                   variant="outline"
-                  onClick={() => navigate('/dashboard')}
+                  onClick={() => navigate('/')}
                   className="hover:scale-105 transition-transform duration-200"
                 >
                   Cancel
