@@ -94,7 +94,7 @@ const Index = () => {
             <span className="text-4xl md:text-6xl">Blog Platform</span>
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
-            A modern, AI-powered blogging platform built with AI. <br />
+            A modern, AI-powered fully functional blogging platform. <br />
             Create, share, and engage with beautiful content.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
