@@ -134,15 +134,6 @@ Thank you for reading! Feel free to share your thoughts and experiences in the c
           </div>
           <div className="flex items-center space-x-2">
             <Button 
-              variant="outline"
-              onClick={generateAIContent}
-              disabled={isGenerating}
-              className="hover:scale-105 transition-transform duration-200"
-            >
-              <Sparkles className="w-4 h-4 mr-2" />
-              {isGenerating ? "Generating..." : "AI Assistant"}
-            </Button>
-            <Button 
               type="button" 
               variant="outline"
               onClick={(e) => handleSubmit(e, false)}
